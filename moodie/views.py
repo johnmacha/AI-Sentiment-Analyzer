@@ -3,10 +3,7 @@ from transformers import pipeline
 from django.http import JsonResponse
 
 #Load model once (expensive operation)
-sentiment_analyzer = pipeline(
-    'sentiment-analysis',
-    model="cardiffnlp/twitter-roberta-base-sentiment"
-    )
+sentiment_analyzer = pipeline('sentiment-analysis')
 
 # Create your views here.
 def home(request): #For GET
@@ -18,9 +15,9 @@ def analyse_review(request): #For POST
         result = sentiment_analyzer(user_text)[0]
 
         label_map = {
-            "LABEL_0": "Negative 😡",
-            "LABEL_1": "Neutral 🤔",
-            "LABEL_2": "Positive 😊",
+            "NEGATIVE": "Negative 😡",
+            # "NEUTRAL": "Neutral 🤔",
+            "POSITIVE": "Positive 😊",
         }
         
         sentiment_text = label_map.get(result['label'], "Unknown ❓")
