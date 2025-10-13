@@ -1,9 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from transformers import pipeline
 from django.http import JsonResponse
-
-#Load model once (expensive operation)
-sentiment_analyzer = pipeline('sentiment-analysis')
 
 # Create your views here.
 def home(request): #For GET
@@ -12,6 +9,13 @@ def home(request): #For GET
 def analyse_review(request): #For POST
     if request.method == 'POST':
         user_text = request.POST.get('review')
+
+     #Load model once (expensive operation)/ Updated - Load only when needed
+        sentiment_analyzer = pipeline(
+        'sentiment-analysis',
+        model="distilbert-base-uncased-finetuned-sst-2-english"
+         )
+        
         result = sentiment_analyzer(user_text)[0]
 
         label_map = {
