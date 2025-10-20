@@ -2,7 +2,10 @@ import gradio as gr
 from transformers import pipeline
 
 # Load model
-sentiment_analyzer = pipeline("sentiment-analysis")
+sentiment_analyzer = pipeline(
+    "sentiment-analysis", 
+    model="distilbert-base-uncased-finetuned-sst-2-english"
+)
 
 # Emoji mapping
 label_map = {
