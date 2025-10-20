@@ -31,4 +31,4 @@
 - Requests
 
 #Live Demo
-- To have a peek on the live app visit https://huggingface.co/spaces/Juaan2/AI-Sentiment-Analyzer
+- To have a peek on the live app visit https://huggingface.co/spaces/Juaan2/AI-Sentiment-Analyzer](https://huggingface.co/spaces/Juaan2/AI-Sentiment-Analyzer
